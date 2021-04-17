@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Friend {
@@ -16,18 +17,16 @@ public class Friend {
     @JsonIgnore
     boolean married;
 
-    public List<Address> getAddressList() {
-        return addressList;
+    public Set<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Address> addressList;
-
-
+    @OneToMany(mappedBy = "friend")
+    private Set<Address> addresses;
 
     public int getId() {
         return id;

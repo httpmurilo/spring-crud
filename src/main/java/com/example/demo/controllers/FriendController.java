@@ -25,4 +25,9 @@ public class FriendController {
     Friend update(@RequestBody Friend friend){
         return friendService.save(friend);
     }
+
+    @DeleteMapping
+    void delete(@PathVariable Integer id){
+        friendService.deleteById(id);
+    }
 }

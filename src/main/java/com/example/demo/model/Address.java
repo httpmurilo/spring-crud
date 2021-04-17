@@ -12,10 +12,6 @@ public class Address {
         this.id = id;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     public String getStreet() {
         return street;
     }
@@ -25,13 +21,27 @@ public class Address {
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String street;
-    private String City;
+    private String city;
+
+    public Friend getFriend() {
+        return friend;
+    }
+
+    public void setFriend(Friend friend) {
+        this.friend = friend;
+    }
+
+    @ManyToOne
+    private Friend friend;
 }
